@@ -3,7 +3,7 @@ var requestOptions = {
     redirect: 'follow'
   };
   
-  fetch("http://localhost:5000/server/users", requestOptions)
+  fetch("https://tekki-docker-app.onrender.com/server/users", requestOptions)
   .then(response => response.text())
   .then(result => {console.log(result), localStorage.setItem('signupData', result)})
   .catch(error => console.log('error', error));
@@ -20,7 +20,7 @@ function Login() {
     else{*/
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Access-Control-Allow-Origin", "https://mybrandserver.onrender.com/")
+        myHeaders.append("Access-Control-Allow-Origin", "https://tekki-docker-app.onrender.com")
         const data = {
             email: email,
             password: password,
@@ -35,7 +35,7 @@ function Login() {
         };
     
         console.log(data, email.value);
-        fetch("http://localhost:5000/server/auth/login", requestOptions)
+        fetch("https://tekki-docker-app.onrender.com/server/auth/login", requestOptions)
             .then((response) => response.json())
             .then((result) => { console.log(result), localStorage.setItem('current_user', JSON.stringify(result))})
             .catch((error) => console.log("error", error));
@@ -44,8 +44,8 @@ function Login() {
 setTimeout(function () {
   result = JSON.parse(localStorage.getItem('current_user'));
   
-  if (result === 'Wrong credentials!') {
-    alert('Something went wrong, Please verify your credentials and try again');
+  if (!result.others) {
+    alert(`${result}`);
   } else if (result.others.isAdmin) {
     location.href = "./Dashboard.html";
   } else if (result) {

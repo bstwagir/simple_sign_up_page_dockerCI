@@ -49,7 +49,7 @@ const options = {
 
 		servers: [
 			{
-				url: "http://localhost:5000",
+				url: "https://tekki-sign-up-docker-app.onrender.com",
 			},
 		],
 	},
@@ -84,6 +84,9 @@ mongoose
   // app.use("/server/posts",postRoute);
   // app.use("/server/contactQueries",contactRoute);
   // app.use("/server/posts",commentRoute);
+  app.get('/home',(req,res)=>{
+    res.status(200).json('Welcome')
+  })
 
 
   module.exports = app.listen("5000", () => {
