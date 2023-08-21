@@ -68,7 +68,7 @@ app.use(function(req, res, next) {
   next();
 });
 mongoose
-  .connect('mongodb+srv://bstwagir:123456A-z@cluster0.rchjodm.mongodb.net/Docker?retryWrites=true&w=majority', {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
    // useCreateIndex: true,

@@ -41,14 +41,20 @@ function Login() {
             .catch((error) => console.log("error", error));
 
             let result;
-            setTimeout(function (){ result = JSON.parse(localStorage.getItem('current_user'))},2000)
-
-            setTimeout(function (){  if (result.others.isAdmin){location.href = "./Dashboard.html"}
-        else if(current_user){
-            location.href = "./Blog.html";
-            document.querySelector(".button").innerHTML = result.others.name
-
-        }},2000)
+setTimeout(function () {
+  result = JSON.parse(localStorage.getItem('current_user'));
+  
+  if (result === 'Wrong credentials!') {
+    alert('Something went wrong, Please verify your credentials and try again');
+  } else if (result.others.isAdmin) {
+    location.href = "./Dashboard.html";
+  } else if (result) {
+    location.href = "./Dashboard.html";
+    document.querySelector(".button").innerHTML = result.others.name;
+  } else {
+    alert('Something went wrong, please try again');
+  }
+}, 2000);
         
     }
         
