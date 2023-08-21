@@ -4,7 +4,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://localhost:5000/server/users", requestOptions)
+fetch("https://tekki-sign-up-docker-app.onrender.com/server/users", requestOptions)
 .then(response => response.text())
 .then(result => {console.log(result), localStorage.setItem('signupData', result)})
 .catch(error => console.log('error', error));
@@ -22,7 +22,7 @@ function SignUp()
     
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Access-Control-Allow-Origin", "http://localhost:5000/")
+myHeaders.append("Access-Control-Allow-Origin", "https://tekki-sign-up-docker-app.onrender.com")
 
 
 
@@ -68,7 +68,7 @@ myHeaders.append("Access-Control-Allow-Origin", "http://localhost:5000/")
        
       const sendMsg = () => {
         console.log({name, email, password, isAdmin});
-      fetch("http://localhost:5000/server/auth/signup", requestOptions)
+      fetch("https://tekki-sign-up-docker-app.onrender.com/server/auth/signup", requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
