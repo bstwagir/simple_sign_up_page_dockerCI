@@ -84,8 +84,8 @@ mongoose
   // app.use("/server/posts",postRoute);
   // app.use("/server/contactQueries",contactRoute);
   // app.use("/server/posts",commentRoute);
-  app.get('/home',(req,res)=>{
-    res.status(200).json('Welcome')
+  app.get('/',(req,res)=>{
+    res.status(200).json('Welcome to Tekki-rw. Follow this link: "https://tekki-docker-app.onrender.com/api-docs" to access the documentions')
   })
 
 

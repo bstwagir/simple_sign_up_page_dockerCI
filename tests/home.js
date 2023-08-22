@@ -10,7 +10,7 @@ describe('testing routes',function(){
     it('should return a simple message',function(done){
         chai
         .request(server)
-        .get('/home')
+        .get('/')
         .end((err,res)=>{
             res.should.have.status(200);
             done()
