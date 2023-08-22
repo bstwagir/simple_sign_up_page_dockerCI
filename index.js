@@ -14,6 +14,7 @@ const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 let bodyParser = require('body-parser')
 const cors = require('cors');
+
 app.use(cors());
 
 
@@ -24,7 +25,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));  
 
 
-dotenv.config();
+dotenv.config()
 
 const options = {
 	definition: {
@@ -88,10 +89,11 @@ mongoose
     res.status(200).json('Welcome to Tekki-rw. Follow this link: "https://tekki-docker-app.onrender.com/api-docs" to access the documentions')
   })
 
-
-  module.exports = app.listen("5000", () => {
-   console.log("Backend is running.");
- });
+  const PORT = process.env.PORT
+  const server = app.listen(PORT, () => {
+    console.log(`Backend is running ${PORT}`);
+  });
+  module.exports = server;
 
   
 
