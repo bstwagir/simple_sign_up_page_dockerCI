@@ -13,7 +13,7 @@ if(fs.existsSync(containerIdFilePath)){
         console.error('Error stopping container:', err);
       } else {
         console.log('Container stopped:', containerId);
-  
+
         container.remove((err) => {
           if (err) {
             console.error('Error deleting container:', err);

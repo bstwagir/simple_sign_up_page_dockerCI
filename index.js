@@ -5,10 +5,6 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
-// const postRoute = require("./routes/posts");
-// const commentRoute = require("./routes/comments");
-// const contactRoute = require("./routes/contactQueries");
-const multer = require("multer");
 const path = require("path");
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
@@ -72,19 +68,14 @@ mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-   // useCreateIndex: true,
-   // useFindAndModify:true
   })
-  .then(console.log("Connected to MongoDB"))
+  .then(console.log(`Connected to MongoDB URL: ${process.env.MONGODB_URI}`))
   .catch((err) => console.log(err));
 
 
 
   app.use("/server/auth",authRoute);
   app.use("/server/users",userRoute);
-  // app.use("/server/posts",postRoute);
-  // app.use("/server/contactQueries",contactRoute);
-  // app.use("/server/posts",commentRoute);
   app.get('/',(req,res)=>{
     res.status(200).json('Welcome to Tekki-rw. Follow this link: "https://tekki-docker-app.onrender.com/api-docs" to access the documentions')
   })
